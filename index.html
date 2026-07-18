@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohd Zaid Ayaz</title>
+<meta name="description" content="Mohd Zaid Ayaz — MBA Candidate, Finance & Marketing, Lakshmi Narain College of Technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:      #f7f5f0;
+    --paper-dim:  #efece3;
+    --ink:        #16181d;
+    --ink-soft:   #565a63;
+    --ink-faint:  #8b8f97;
+    --line:       #d9d4c7;
+
+    --ink-bg:     #101218;
+    --ink-bg-2:   #1a1d26;
+    --on-ink:     #f4f2ea;
+    --on-ink-dim: #9298a6;
+    --on-ink-line:#2c303c;
+
+    --accent:      #8a1f35;
+    --accent-soft: #b23a52;
+    --accent-pale: #f3e0dd;
+    --gold:        #b6863c;
+    --gold-soft:   #d4aa63;
+
+    --serif: 'Fraunces', Georgia, serif;
+    --sans:  'Inter', -apple-system, 'Segoe UI', sans-serif;
+    --mono:  'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--accent); color:var(--on-ink); }
+  a{ color:inherit; text-decoration:none; }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  .eyebrow{
+    font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  }
+  .serif{ font-family:var(--serif); }
+
+  .site-header{
+    position:sticky; top:0; z-index:60;
+    background:rgba(247,245,240,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .monogram{
+    width:36px; height:36px; border:1px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-weight:500; font-size:14px; letter-spacing:.02em;
+    flex-shrink:0; color:var(--accent);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .site-header:hover .monogram{ border-color:var(--gold); color:var(--gold); }
+  .header-name{ font-family:var(--serif); font-size:15px; letter-spacing:.01em; }
+  nav.primary-nav{ display:flex; gap:28px; }
+  nav.primary-nav a{
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav.primary-nav a:hover{ color:var(--accent); border-color:var(--gold); }
+  .header-left{ display:flex; align-items:center; gap:14px; }
+  @media (max-width:760px){ nav.primary-nav{ display:none; } }
+
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 12% -10%, rgba(178,58,82,0.20), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(182,134,60,0.10), transparent 55%),
+      var(--ink-bg);
+    color:var(--on-ink);
+    padding:120px 0 96px;
+    position:relative;
+  }
+  .hero .eyebrow{ color:var(--gold-soft); margin-bottom:22px; }
+  .hero h1{
+    font-family:var(--serif); font-weight:400; font-size:clamp(40px, 6.4vw, 72px);
+    line-height:1.05; letter-spacing:-0.01em; max-width:14ch;
+  }
+  .hero h1 em{ font-style:italic; font-weight:400; color:var(--gold-soft); }
+  .hero-statement{
+    margin-top:28px; max-width:52ch; color:var(--on-ink-dim); font-size:17px; line-height:1.7;
+  }
+  .hero-rule{ width:64px; height:2px; background:linear-gradient(90deg, var(--accent-soft), var(--gold-soft)); margin:36px 0; }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:8px 32px; font-family:var(--mono); font-size:12.5px; color:var(--on-ink-dim);
+  }
+  .hero-meta a{ color:var(--on-ink-dim); }
+  .hero-meta a:hover{ color:var(--on-ink); }
+  .hero-actions{ margin-top:40px; display:flex; flex-wrap:wrap; gap:14px; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; font-family:var(--mono); font-size:11.5px; font-weight:500;
+    letter-spacing:.08em; text-transform:uppercase; cursor:pointer;
+    border:1px solid currentColor; border-radius:0;
+    transition:background .18s ease, color .18s ease, border-color .18s ease;
+    background:transparent;
+  }
+  .hero .btn-fill{ background:var(--on-ink); color:var(--ink-bg); border-color:var(--on-ink); }
+  .hero .btn-fill:hover{ background:var(--gold-soft); color:var(--ink-bg); border-color:var(--gold-soft); }
+  .hero .btn-outline{ color:var(--on-ink); border-color:var(--on-ink-line); }
+  .hero .btn-outline:hover{ border-color:var(--gold-soft); color:var(--gold-soft); }
+
+  .btn-fill-light{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .btn-fill-light:hover{ background:var(--accent); color:var(--paper); border-color:var(--accent); }
+  .btn-outline-light{ color:var(--ink); border-color:var(--line); }
+  .btn-outline-light:hover{ border-color:var(--accent); color:var(--accent); }
+
+  main{ }
+  .section{
+    border-top:1px solid var(--line);
+    padding:88px 0;
+    display:grid; grid-template-columns:180px 1fr; gap:56px;
+  }
+  @media (max-width:760px){
+    .section{ grid-template-columns:1fr; gap:20px; padding:64px 0; }
+  }
+  .section-index{ }
+  .section-index .num{
+    font-family:var(--serif); font-style:italic; font-size:38px; color:var(--accent);
+    line-height:1;
+  }
+  .section:nth-of-type(even) .section-index .num{ color:var(--gold); }
+  .section-index .label{
+    margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  @media (max-width:760px){
+    .section-index{ display:flex; align-items:baseline; gap:14px; }
+    .section-index .num{ font-size:26px; }
+    .section-index .label{ margin-top:0; }
+  }
+  .section-content h3.section-title{
+    font-family:var(--serif); font-weight:400; font-size:28px; margin-bottom:22px; max-width:20ch;
+  }
+
+  .profile-text{ max-width:66ch; color:var(--ink-soft); font-size:16px; }
+  .profile-text strong{ color:var(--ink); font-weight:600; }
+  .profile-text p + p{ margin-top:16px; }
+
+  .ed-item{
+    display:grid; grid-template-columns:110px 1fr; gap:20px;
+    padding:22px 0; border-top:1px solid var(--line);
+  }
+  .ed-item:first-child{ border-top:none; padding-top:0; }
+  .ed-years{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); padding-top:3px; }
+  .ed-degree{ font-family:var(--serif); font-size:18px; color:var(--ink); }
+  .ed-school{ margin-top:5px; font-size:13.5px; color:var(--ink-soft); }
+  .ed-detail{ margin-top:8px; font-size:13px; color:var(--ink-faint); max-width:60ch; }
+  @media (max-width:560px){ .ed-item{ grid-template-columns:1fr; gap:6px; } }
+
+  .cert-row{
+    display:grid; grid-template-columns:1fr auto; gap:20px; align-items:baseline;
+    padding:20px 0; border-top:1px solid var(--line);
+  }
+  .cert-row:first-child{ border-top:none; padding-top:0; }
+  .cert-name{ font-family:var(--serif); font-size:16.5px; color:var(--ink); }
+  .cert-issuer{ font-size:12.5px; color:var(--gold); font-weight:600; margin-top:4px; }
+  .cert-desc{ font-size:12.5px; color:var(--ink-faint); margin-top:6px; max-width:60ch; }
+  .cert-status{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-faint); white-space:nowrap;
+  }
+
+  .exp-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:40px 48px; }
+  @media (max-width:560px){ .exp-grid{ grid-template-columns:1fr; } }
+  .exp-col .exp-head{
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--accent); border-bottom:2px solid var(--gold-soft); padding-bottom:10px; margin-bottom:14px;
+  }
+  .exp-col:nth-child(even) .exp-head{ color:var(--gold); border-bottom-color:var(--accent-soft); }
+  .exp-col ul{ list-style:none; }
+  .exp-col li{
+    font-size:14px; color:var(--ink-soft); padding:7px 0; border-bottom:1px dotted var(--line);
+  }
+  .exp-col li:last-child{ border-bottom:none; }
+
+  .work-desc{ color:var(--ink-soft); max-width:66ch; font-size:15px; }
+  .work-stats{
+    margin-top:32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:24px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:24px 0;
+  }
+  .work-stat .v{ font-family:var(--serif); font-size:22px; color:var(--accent); }
+  .work-stat .k{ font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+  .work-links{ margin-top:28px; display:flex; gap:14px; flex-wrap:wrap; }
+  .work-status{
+    display:inline-block; margin-top:18px; font-family:var(--mono); font-size:10.5px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+    border:1px solid var(--line); padding:5px 10px;
+  }
+  .work-status.is-live{ color:var(--accent); border-color:var(--accent-pale); }
+
+  .rec-item{ padding:20px 0; border-top:1px solid var(--line); }
+  .rec-item:first-child{ border-top:none; padding-top:0; }
+  .rec-title{ font-family:var(--serif); font-size:16.5px; color:var(--ink); }
+  .rec-desc{ margin-top:6px; font-size:13.5px; color:var(--ink-faint); max-width:64ch; }
+
+  .contact-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; }
+  @media (max-width:760px){ .contact-grid{ grid-template-columns:1fr; } }
+  .field{ margin-bottom:26px; }
+  .field label{
+    display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-faint); margin-bottom:8px;
+  }
+  .field input, .field textarea{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line);
+    color:var(--ink); font-family:var(--sans); font-size:15px; padding:8px 2px; resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{ border-color:var(--accent); }
+  .form-status{ font-family:var(--mono); font-size:11.5px; margin-top:14px; min-height:16px; }
+  .form-status.ok{ color:#3d6b4f; }
+  .form-status.err{ color:var(--accent); }
+
+  .signature-block{ padding-left:0; }
+  .signature-block .sig-name{ font-family:var(--serif); font-size:22px; color:var(--ink); }
+  .signature-block .sig-role{ font-size:13px; color:var(--ink-faint); margin-top:4px; }
+  .sig-line{ margin-top:22px; padding-top:16px; border-top:1px solid var(--line); }
+  .sig-line .lbl{ font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); display:block; margin-bottom:3px; }
+  .sig-line a, .sig-line span{ font-size:14px; color:var(--ink-soft); }
+  .sig-line a:hover{ color:var(--accent); }
+
+  .site-footer{
+    background:var(--ink-bg); color:var(--on-ink-dim);
+    padding:56px 0 40px;
+  }
+  .footer-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;
+    padding-bottom:32px; border-bottom:1px solid var(--on-ink-line);
+  }
+  .footer-name{ font-family:var(--serif); font-size:20px; color:var(--on-ink); }
+  .footer-links{ display:flex; gap:24px; flex-wrap:wrap; font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; }
+  .footer-links a:hover{ color:var(--gold-soft); }
+  .footer-bottom{ margin-top:24px; font-family:var(--mono); font-size:11px; color:var(--on-ink-dim); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible{ opacity:1; transform:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<script>
+const CONFIG = {
+  name: "Mohd Zaid Ayaz",
+  initials: "MZA",
+  role: "MBA Candidate — Finance & Marketing",
+  positioning: "Finance and marketing fundamentals, sharpened by practice — from live business simulations to the market-tracking software I build in my own time.",
+  location: "Bhopal, Madhya Pradesh, India",
+  email: "zaidayaz0123@gmail.com",
+  phone: "+91 6392483064",
+  github: "https://github.com/zaidayaz0123",
+  linkedin: "https://linkedin.com/in/mohd-zaid-ayaz",
+  resumeFile: "resume.pdf",
+  formspreeEndpoint: "https://formspree.io/f/mwvgoojj",
+  projectLive: "",
+  projectLocalFile: "zaid-terminal.html",
+  year: new Date().getFullYear()
+};
+</script>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="header-left">
+      <div class="monogram" id="monogram"></div>
+      <div class="header-name" id="headerName"></div>
+    </div>
+    <nav class="primary-nav">
+      <a href="#profile">Profile</a>
+      <a href="#education">Education</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Curriculum Vitae</div>
+    <h1 id="heroName"></h1>
+    <p class="hero-statement" id="heroStatement"></p>
+    <div class="hero-rule"></div>
+    <div class="hero-meta" id="heroMeta"></div>
+    <div class="hero-actions">
+      <a class="btn btn-fill" id="resumeBtn" href="resume.pdf" download>Download CV</a>
+      <a class="btn btn-outline" href="#contact">Contact</a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="section reveal" id="profile">
+    <div class="section-index"><div class="num">01</div><div class="label">Profile</div></div>
+    <div class="section-content"><div class="profile-text" id="profileText"></div></div>
+  </section>
+
+  <section class="section reveal" id="education">
+    <div class="section-index"><div class="num">02</div><div class="label">Education</div></div>
+    <div class="section-content">
+      <h3 class="section-title">Academic Record</h3>
+      <div id="eduList"></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="certifications">
+    <div class="section-index"><div class="num">03</div><div class="label">Certifications</div></div>
+    <div class="section-content">
+      <h3 class="section-title">Professional Certifications</h3>
+      <div id="certList"></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="expertise">
+    <div class="section-index"><div class="num">04</div><div class="label">Expertise</div></div>
+    <div class="section-content">
+      <h3 class="section-title">Areas of Expertise</h3>
+      <div class="exp-grid" id="expertiseGrid"></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="work">
+    <div class="section-index"><div class="num">05</div><div class="label">Selected Work</div></div>
+    <div class="section-content">
+      <h3 class="section-title">Zaid Terminal</h3>
+      <p class="work-desc">
+        An independently designed and built financial markets platform — a single-file dashboard tracking
+        Indian equities, global indices, crypto, and forex in real time, paired with a Node.js and Express
+        backend for live data delivery. Undertaken as a self-directed project alongside coursework, it
+        reflects the same analytical instinct applied to markets in the classroom: identify the signal,
+        structure it clearly, and deliver it usefully.
+      </p>
+      <div class="work-stats" id="workStats"></div>
+      <div class="work-links">
+        <a class="btn btn-fill-light" id="projectPrimaryLink" href="zaid-terminal.html">View Demo</a>
+        <a class="btn btn-outline-light" href="https://github.com/zaidayaz0123" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+      </div>
+      <div class="work-status" id="liveTag">Not yet deployed</div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="recognition">
+    <div class="section-index"><div class="num">06</div><div class="label">Recognition</div></div>
+    <div class="section-content">
+      <h3 class="section-title">Competitions &amp; Activities</h3>
+      <div id="recList"></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="contact">
+    <div class="section-index"><div class="num">07</div><div class="label">Contact</div></div>
+    <div class="section-content">
+      <h3 class="section-title">Get in Touch</h3>
+      <div class="contact-grid">
+        <form id="contactForm">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" required autocomplete="name" maxlength="120">
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" required autocomplete="email" maxlength="200">
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" required maxlength="4000"></textarea>
+          </div>
+          <button class="btn btn-fill-light" type="submit" id="cf-submit">Send Message</button>
+          <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
+        </form>
+        <div class="signature-block">
+          <div class="sig-name" id="sigName"></div>
+          <div class="sig-role" id="sigRole"></div>
+          <div class="sig-line"><span class="lbl">Email</span><a id="directEmail" href="#"></a></div>
+          <div class="sig-line"><span class="lbl">Phone</span><a id="directPhone" href="#"></a></div>
+          <div class="sig-line"><span class="lbl">LinkedIn</span><a id="directLinkedin" href="#" target="_blank" rel="noopener noreferrer"></a></div>
+          <div class="sig-line"><span class="lbl">GitHub</span><a id="directGithub" href="#" target="_blank" rel="noopener noreferrer"></a></div>
+          <div class="sig-line"><span class="lbl">Location</span><span id="directLocation"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-name" id="footerName"></div>
+      <div class="footer-links">
+        <a href="#profile">Profile</a>
+        <a href="#education">Education</a>
+        <a href="#work">Work</a>
+        <a id="footerLinkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a id="footerGithub" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span id="footerYear"></span>
+      <span>Bhopal, Madhya Pradesh</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  function esc(str){
+    return String(str).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  document.getElementById('monogram').textContent = CONFIG.initials;
+  document.getElementById('headerName').textContent = CONFIG.name;
+  document.getElementById('heroName').innerHTML = 'Mohd Zaid <em>Ayaz</em>';
+  document.getElementById('heroStatement').textContent = CONFIG.positioning;
+  document.getElementById('footerName').textContent = CONFIG.name;
+  document.getElementById('footerYear').textContent = '© ' + CONFIG.year + ' ' + CONFIG.name;
+  document.getElementById('resumeBtn').href = CONFIG.resumeFile;
+  document.getElementById('sigName').textContent = CONFIG.name;
+  document.getElementById('sigRole').textContent = CONFIG.role;
+
+  const heroMeta = document.getElementById('heroMeta');
+  [
+    { text: CONFIG.location },
+    { text: CONFIG.email, href: 'mailto:' + CONFIG.email },
+    { text: 'LinkedIn', href: CONFIG.linkedin },
+    { text: 'GitHub', href: CONFIG.github }
+  ].forEach(function(item){
+    const node = item.href ? document.createElement('a') : document.createElement('span');
+    if (item.href){
+      node.href = item.href;
+      if (item.href.startsWith('http')){ node.target = '_blank'; node.rel = 'noopener noreferrer'; }
+    }
+    node.textContent = item.text;
+    heroMeta.appendChild(node);
+  });
+
+  const directEmail = document.getElementById('directEmail');
+  directEmail.href = 'mailto:' + CONFIG.email; directEmail.textContent = CONFIG.email;
+  const directPhone = document.getElementById('directPhone');
+  directPhone.href = 'tel:' + CONFIG.phone.replace(/\s+/g,''); directPhone.textContent = CONFIG.phone;
+  const directLinkedin = document.getElementById('directLinkedin');
+  directLinkedin.href = CONFIG.linkedin; directLinkedin.textContent = CONFIG.linkedin.replace('https://','');
+  const directGithub = document.getElementById('directGithub');
+  directGithub.href = CONFIG.github; directGithub.textContent = CONFIG.github.replace('https://','');
+  document.getElementById('directLocation').textContent = CONFIG.location;
+  document.getElementById('footerLinkedin').href = CONFIG.linkedin;
+  document.getElementById('footerGithub').href = CONFIG.github;
+
+  document.getElementById('profileText').innerHTML =
+    '<p>I am an MBA candidate at <strong>Lakshmi Narain College of Technology (LNCT)</strong>, dual-specializing ' +
+    'in Finance and Marketing, following a BBA in Marketing. My academic grounding is complemented by three ' +
+    'professional certifications spanning banking, insurance, and securities markets regulation.</p>' +
+    '<p>Outside coursework, I build independently — most notably <strong>Zaid Terminal</strong>, a real-time ' +
+    'financial markets platform developed and iterated over several months. I also serve on the editorial ' +
+    'panel of my institution\u2019s newsletter and have taken part in the AIMA BizLab national-level ' +
+    'business simulation competition.</p>';
+
+  const education = [
+    { years:'2025–2027', degree:'MBA — Finance & Marketing', school:'Lakshmi Narain College of Technology (LNCT), Bhopal, MP', detail:'Affiliated with Barkatullah University. Advanced financial frameworks, strategic marketing analytics, corporate valuation, and consumer market behavior.' },
+    { years:'2022–2025', degree:'BBA — Marketing', school:'Career College, Bhopal, MP', detail:'Affiliated with Barkatullah University. Market research, advertising, consumer behavior, and organizational management.' },
+    { years:'2021', degree:'Senior Secondary (XII) — Commerce', school:'Hema Higher Secondary School, Bhopal, MP', detail:'' },
+    { years:'2019', degree:'High School (X)', school:'S.D.S. Inter College, Lalitpur, UP', detail:'' }
+  ];
+  const eduList = document.getElementById('eduList');
+  education.forEach(function(e){
+    const div = document.createElement('div');
+    div.className = 'ed-item';
+    div.innerHTML =
+      '<div class="ed-years">' + esc(e.years) + '</div>' +
+      '<div><div class="ed-degree">' + esc(e.degree) + '</div>' +
+      '<div class="ed-school">' + esc(e.school) + '</div>' +
+      (e.detail ? '<div class="ed-detail">' + esc(e.detail) + '</div>' : '') + '</div>';
+    eduList.appendChild(div);
+  });
+
+  const certs = [
+    { name:'Certificate Programme in Banking, Finance and Insurance (CPBFI)', issuer:'Bajaj Finserv', desc:'Retail banking operations, insurance mechanisms, and corporate communication frameworks.' },
+    { name:'NISM Series XII: Securities Markets Foundation', issuer:'National Institute of Securities Markets', desc:'Regulatory framework of Indian securities markets, primary and secondary market structures, equity and debt instruments, mutual funds.' },
+    { name:'NISM Investor Awareness Program', issuer:'National Institute of Securities Markets', desc:'Long-term financial planning, wealth accumulation, macroeconomic indicators, risk-return optimization.' }
+  ];
+  const certList = document.getElementById('certList');
+  certs.forEach(function(c){
+    const div = document.createElement('div');
+    div.className = 'cert-row';
+    div.innerHTML =
+      '<div><div class="cert-name">' + esc(c.name) + '</div>' +
+      '<div class="cert-issuer">' + esc(c.issuer) + '</div>' +
+      '<div class="cert-desc">' + esc(c.desc) + '</div></div>' +
+      '<div class="cert-status">Completed</div>';
+    certList.appendChild(div);
+  });
+
+  const expertise = [
+    { head:'Finance', items:['Corporate Finance', 'Securities & Capital Markets', 'Retail Banking Operations', 'Risk Analysis', 'Financial Literacy'] },
+    { head:'Marketing & Strategy', items:['Market Research', 'Consumer Behavior', 'Brand Strategy', 'Competitor Analysis', 'Strategic Management'] },
+    { head:'Technical & Analytical', items:['Advanced Excel — Pivot Tables, Lookups', 'Power BI — Dashboards & Data Viz'] },
+    { head:'Professional', items:['Public Speaking', 'Editorial Writing', 'Business Presentations', 'Team Collaboration'] }
+  ];
+  const expertiseGrid = document.getElementById('expertiseGrid');
+  expertise.forEach(function(g){
+    const col = document.createElement('div');
+    col.className = 'exp-col';
+    const items = g.items.map(function(i){ return '<li>' + esc(i) + '</li>'; }).join('');
+    col.innerHTML = '<div class="exp-head">' + esc(g.head) + '</div><ul>' + items + '</ul>';
+    expertiseGrid.appendChild(col);
+  });
+
+  const stats = [
+    { v:'10+', k:'Data Modules' },
+    { v:'Node / Express', k:'Backend' },
+    { v:'WebSocket', k:'Live Pricing' },
+    { v:'PWA', k:'Installable' }
+  ];
+  const workStats = document.getElementById('workStats');
+  stats.forEach(function(s){
+    const div = document.createElement('div');
+    div.className = 'work-stat';
+    div.innerHTML = '<div class="v">' + esc(s.v) + '</div><div class="k">' + esc(s.k) + '</div>';
+    workStats.appendChild(div);
+  });
+
+  const liveTag = document.getElementById('liveTag');
+  const primaryLink = document.getElementById('projectPrimaryLink');
+  if (CONFIG.projectLive){
+    liveTag.textContent = 'Live';
+    liveTag.classList.add('is-live');
+    primaryLink.href = CONFIG.projectLive;
+    primaryLink.target = '_blank'; primaryLink.rel = 'noopener noreferrer';
+    primaryLink.textContent = 'View Live Demo';
+  } else {
+    liveTag.textContent = 'Not yet deployed';
+    primaryLink.href = CONFIG.projectLocalFile;
+    primaryLink.textContent = 'View Demo';
+  }
+
+  const recognition = [
+    { title:'Participant — AIMA BizLab Competition, National Level', desc:'Took part in a virtual management simulation hosted by the All India Management Association, executing decisions on pricing, promotion, operations capacity, and working capital budgeting.' },
+    { title:'Participant — Zerodha Varsity Quiz (Financial Assessment)', desc:'Validated financial concepts across market mechanics, equity fundamentals, and personal finance methodology.' },
+    { title:'1st Place — College Debate Competition', desc:'Argued on private enterprise participation in hazardous industries, referencing a case analysis of the Bhopal Gas Tragedy.' },
+    { title:'Winner — Creative Arts & Acting Competition', desc:'Recognized for stage presence, communication, and adaptiveness under unscripted conditions.' },
+    { title:'Editorial Panel Member — LNCT College Newsletter', desc:'Source, review, and publish newsletter editions with a cross-functional student and faculty team, meeting recurring publishing deadlines.' }
+  ];
+  const recList = document.getElementById('recList');
+  recognition.forEach(function(r){
+    const div = document.createElement('div');
+    div.className = 'rec-item';
+    div.innerHTML = '<div class="rec-title">' + esc(r.title) + '</div><div class="rec-desc">' + esc(r.desc) + '</div>';
+    recList.appendChild(div);
+  });
+
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('cf-status');
+  const submitBtn = document.getElementById('cf-submit');
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if (!CONFIG.formspreeEndpoint || CONFIG.formspreeEndpoint.indexOf('formspree.io') === -1){
+      statusEl.textContent = 'Form is not connected yet — please email directly.';
+      statusEl.className = 'form-status err';
+      return;
+    }
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    if (!name || !email || !message){
+      statusEl.textContent = 'Please complete every field.';
+      statusEl.className = 'form-status err';
+      return;
+    }
+    submitBtn.disabled = true;
+    statusEl.textContent = 'Sending…';
+    statusEl.className = 'form-status';
+    fetch(CONFIG.formspreeEndpoint, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok){
+        statusEl.textContent = 'Message sent — thank you. I will respond shortly.';
+        statusEl.className = 'form-status ok';
+        form.reset();
+      } else {
+        statusEl.textContent = 'Something went wrong. Please email directly.';
+        statusEl.className = 'form-status err';
+      }
+    }).catch(function(){
+      statusEl.textContent = 'Network error. Please email directly.';
+      statusEl.className = 'form-status err';
+    }).finally(function(){
+      submitBtn.disabled = false;
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
