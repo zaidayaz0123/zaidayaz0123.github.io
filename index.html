@@ -214,6 +214,13 @@
   }
   .work-status.is-live{ color:var(--accent); border-color:var(--accent-pale); }
 
+  .work-project + .work-project{
+    margin-top:64px; padding-top:56px; border-top:1px solid var(--line);
+  }
+  .work-project-title{
+    font-family:var(--serif); font-weight:400; font-size:22px; margin-bottom:14px; color:var(--ink);
+  }
+
   .rec-item{ padding:20px 0; border-top:1px solid var(--line); }
   .rec-item:first-child{ border-top:none; padding-top:0; }
   .rec-title{ font-family:var(--serif); font-size:16.5px; color:var(--ink); }
@@ -281,6 +288,8 @@ const CONFIG = {
   formspreeEndpoint: "https://formspree.io/f/mwvgoojj",
   projectLive: "reliance.py",
   projectLocalFile: "zaid-terminal.html",
+  researchReportFile: "assets/research/Reliance_Industries_Equity_Research_Report.pdf",
+  researchToolFile: "assets/research/sensitivity-model.html",
   year: new Date().getFullYear()
 };
 </script>
@@ -349,20 +358,42 @@ const CONFIG = {
   <section class="section reveal" id="work">
     <div class="section-index"><div class="num">05</div><div class="label">Selected Work</div></div>
     <div class="section-content">
-      <h3 class="section-title">Zaid Terminal</h3>
-      <p class="work-desc">
-        An independently designed and built financial markets platform — a single-file dashboard tracking
-        Indian equities, global indices, crypto, and forex in real time, paired with a Node.js and Express
-        backend for live data delivery. Undertaken as a self-directed project alongside coursework, it
-        reflects the same analytical instinct applied to markets in the classroom: identify the signal,
-        structure it clearly, and deliver it usefully.
-      </p>
-      <div class="work-stats" id="workStats"></div>
-      <div class="work-links">
-        <a class="btn btn-fill-light" id="projectPrimaryLink" href="zaid-terminal.html">View Demo</a>
-        <a class="btn btn-outline-light" href="https://github.com/zaidayaz0123" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+      <h3 class="section-title">Selected Work</h3>
+
+      <div class="work-project" id="project-terminal">
+        <div class="work-project-title">Zaid Terminal</div>
+        <p class="work-desc">
+          An independently designed and built financial markets platform — a single-file dashboard tracking
+          Indian equities, global indices, crypto, and forex in real time, paired with a Node.js and Express
+          backend for live data delivery. Undertaken as a self-directed project alongside coursework, it
+          reflects the same analytical instinct applied to markets in the classroom: identify the signal,
+          structure it clearly, and deliver it usefully.
+        </p>
+        <div class="work-stats" id="workStats"></div>
+        <div class="work-links">
+          <a class="btn btn-fill-light" id="projectPrimaryLink" href="zaid-terminal.html">View Demo</a>
+          <a class="btn btn-outline-light" href="https://github.com/zaidayaz0123" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+        </div>
+        <div class="work-status" id="liveTag">Not yet deployed</div>
       </div>
-      <div class="work-status" id="liveTag">Not yet deployed</div>
+
+      <div class="work-project" id="project-research">
+        <div class="work-project-title">Reliance Industries — Equity Research</div>
+        <p class="work-desc">
+          An institutional-style equity research initiation report on Reliance Industries Limited
+          (NSE: RELIANCE), built to the format and rigor of professional sell-side research — investment
+          thesis, segment-by-segment financial analysis, sum-of-the-parts valuation, and a five-driver
+          sensitivity model. Paired with a companion tool that recalculates the target price and rating
+          live as key assumptions move.
+        </p>
+        <div class="work-stats" id="researchStats"></div>
+        <div class="work-links">
+          <a class="btn btn-fill-light" id="researchReportLink" href="#" target="_blank" rel="noopener noreferrer">Read the Report (PDF)</a>
+          <a class="btn btn-outline-light" id="researchToolLink" href="#" target="_blank" rel="noopener noreferrer">Try the Interactive Model</a>
+        </div>
+        <div class="work-status is-live">Live</div>
+      </div>
+
     </div>
   </section>
 
@@ -482,8 +513,9 @@ const CONFIG = {
     'in Finance and Marketing, following a BBA in Marketing. My academic grounding is complemented by three ' +
     'professional certifications spanning banking, insurance, and securities markets regulation.</p>' +
     '<p>Outside coursework, I build independently — most notably <strong>Zaid Terminal</strong>, a real-time ' +
-    'financial markets platform developed and iterated over several months. I also serve on the editorial ' +
-    'panel of my institution\u2019s newsletter and have taken part in the AIMA BizLab national-level ' +
+    'financial markets platform developed and iterated over several months, and an institutional-style ' +
+    'equity research report on Reliance Industries with a live sensitivity model. I also serve on the ' +
+    'editorial panel of my institution\u2019s newsletter and have taken part in the AIMA BizLab national-level ' +
     'business simulation competition.</p>';
 
   const education = [
@@ -549,6 +581,22 @@ const CONFIG = {
     div.innerHTML = '<div class="v">' + esc(s.v) + '</div><div class="k">' + esc(s.k) + '</div>';
     workStats.appendChild(div);
   });
+
+  const researchStats = [
+    { v:'29', k:'Pages' },
+    { v:'SOTP + DCF', k:'Valuation Method' },
+    { v:'5', k:'Sensitivity Drivers' },
+    { v:'Live', k:'Interactive Model' }
+  ];
+  const researchStatsEl = document.getElementById('researchStats');
+  researchStats.forEach(function(s){
+    const div = document.createElement('div');
+    div.className = 'work-stat';
+    div.innerHTML = '<div class="v">' + esc(s.v) + '</div><div class="k">' + esc(s.k) + '</div>';
+    researchStatsEl.appendChild(div);
+  });
+  document.getElementById('researchReportLink').href = CONFIG.researchReportFile;
+  document.getElementById('researchToolLink').href = CONFIG.researchToolFile;
 
   const liveTag = document.getElementById('liveTag');
   const primaryLink = document.getElementById('projectPrimaryLink');
