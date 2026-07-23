@@ -260,7 +260,7 @@ positioning: "Finance and marketing fundamentals, sharpened by practice — from
 location: "Bhopal, Madhya Pradesh, India",
 email: "zaidayaz0123@gmail.com",
 phone: "+91 6392483064",
-github: "https://github.com/zaidayaz0123",
+github: "",
 linkedin: "https://linkedin.com/in/mohd-zaid-ayaz",
 resumeFile: "resume.pdf",
 formspreeEndpoint: "https://formspree.io/f/mwvgoojj",
@@ -394,7 +394,6 @@ year: new Date().getFullYear()
         <div class="sig-line"><span class="lbl">Email</span><a id="directEmail" href="#"></a></div>
         <div class="sig-line"><span class="lbl">Phone</span><a id="directPhone" href="#"></a></div>
         <div class="sig-line"><span class="lbl">LinkedIn</span><a id="directLinkedin" href="#" target="_blank" rel="noopener noreferrer"></a></div>
-        <div class="sig-line"><span class="lbl">GitHub</span><a id="directGithub" href="#" target="_blank" rel="noopener noreferrer"></a></div>
         <div class="sig-line"><span class="lbl">Location</span><span id="directLocation"></span></div>
       </div>
     </div>
@@ -410,7 +409,6 @@ year: new Date().getFullYear()
 <a href="#education">Education</a>
 <a href="#work">Work</a>
 <a id="footerLinkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-<a id="footerGithub" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
 </div>
 </div>
 <div class="footer-bottom">
@@ -437,12 +435,15 @@ document.getElementById('resumeBtn').href = CONFIG.resumeFile;
 document.getElementById('sigName').textContent = CONFIG.name;
 document.getElementById('sigRole').textContent = CONFIG.role;
 const heroMeta = document.getElementById('heroMeta');
-[
+const metaItems = [
 { text: CONFIG.location },
 { text: CONFIG.email, href: 'mailto:' + CONFIG.email },
-{ text: 'LinkedIn', href: CONFIG.linkedin },
-{ text: 'GitHub', href: CONFIG.github }
-].forEach(function(item){
+{ text: 'LinkedIn', href: CONFIG.linkedin }
+];
+if (CONFIG.github) {
+metaItems.push({ text: 'GitHub', href: CONFIG.github });
+}
+metaItems.forEach(function(item){
 const node = item.href ? document.createElement('a') : document.createElement('span');
 if (item.href){
 node.href = item.href;
@@ -457,11 +458,8 @@ const directPhone = document.getElementById('directPhone');
 directPhone.href = 'tel:' + CONFIG.phone.replace(/\s+/g,''); directPhone.textContent = CONFIG.phone;
 const directLinkedin = document.getElementById('directLinkedin');
 directLinkedin.href = CONFIG.linkedin; directLinkedin.textContent = CONFIG.linkedin.replace('https://','');
-const directGithub = document.getElementById('directGithub');
-directGithub.href = CONFIG.github; directGithub.textContent = CONFIG.github.replace('https://','');
 document.getElementById('directLocation').textContent = CONFIG.location;
 document.getElementById('footerLinkedin').href = CONFIG.linkedin;
-document.getElementById('footerGithub').href = CONFIG.github;
 document.getElementById('profileText').innerHTML =
 '<p>I am an MBA candidate at <strong>Lakshmi Narain College of Technology (LNCT)</strong>, dual-specializing ' +
 'in Finance and Marketing, following a BBA in Marketing. My academic grounding is complemented by three ' +
